@@ -16,7 +16,7 @@ Train a model with 7 hops on the [Laptop](http://alt.qcri.org/semeval2016/task5/
 python main.py --show True
 ```
 
-Note this code requires TensorFlow and Progress to execute.
+Note this code requires TensorFlow, Future and Progress packages to be installed. As of now, the model might not replicate the performance shown in the original paper as the authors have not yet confirmed the optimal hyper-parameters for training the memory network.
 
 ### Training options
 * `edim`: internal state dimension [300]
@@ -33,8 +33,8 @@ Note this code requires TensorFlow and Progress to execute.
 * `test_data`: test gold data set path [./data/Laptops_Test_Gold.xml] or [./data/Restaurants_Test_Gold.xml]
 * `show`: print progress [False]
 
-### Performance - Laptop Dataset
-| Model | Paper | This Code|
+### Performance - Laptop Dataset (todo)
+| Model | In Paper | This Code|
 |---|---|---|
 |MemNet (1)|67.66||
 |MemNet (2)|71.14||
@@ -46,8 +46,8 @@ Note this code requires TensorFlow and Progress to execute.
 |MemNet (8)|72.05||
 |MemNet (9)|72.21||
 
-### Performance - Restaurant Dataset
-| Model | Paper | This Code|
+### Performance - Restaurant Dataset (todo)
+| Model | In Paper | This Code|
 |---|---|---|
 |MemNet (1)|76.10||
 |MemNet (2)|78.61||
@@ -61,7 +61,7 @@ Note this code requires TensorFlow and Progress to execute.
 
 ### Acknowledgements
 * More than 80% of the code is borrowed from [carpedm20](https://github.com/carpedm20/MemN2N-tensorflow).
-* Using this code means you have read and accepted the copyrights set by the dataset providers. 
+* Using this code means you have read and accepted the copyrights set by the dataset providers.
 
 ### Author
 [Ganesh J](https://researchweb.iiit.ac.in/~ganesh.j/)
