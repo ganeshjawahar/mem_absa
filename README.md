@@ -1,6 +1,6 @@
 ## Aspect Level Sentiment Classification with Deep Memory Network
 
-[TensorFlow](https://www.tensorflow.org/) implementation of [Tang et al.'s EMNLP 2016/](https://arxiv.org/abs/1605.08900) work.
+[TensorFlow](https://www.tensorflow.org/) implementation of [Tang et al.'s EMNLP 2016](https://arxiv.org/abs/1605.08900) work.
 
 ### Problem Statement
 Given a sentence and an aspect occurring in the sentence, this task aims at inferring the sentiment polarity (e.g. positive, negative, neutral) of the aspect.
@@ -16,7 +16,7 @@ Train a model with 7 hops on the [Laptop](http://alt.qcri.org/semeval2016/task5/
 python main.py --show True
 ```
 
-Note this code requires TensorFlow and Progress to run.
+Note this code requires TensorFlow and Progress to execute.
 
 ### Training options
 * `edim`: internal state dimension [300]
@@ -29,8 +29,8 @@ Note this code requires TensorFlow and Progress to run.
 * `init_std`: weight initialization std [0.05]
 * `max_grad_norm`: clip gradients to this norm [50]
 * `pretrain_file`: pre-trained glove vectors file path [../data/glove.6B.300d.txt]
-* `train_data`: train gold data set path [./data/Laptop_Train_v2.xml] (or [./data/Restaurants_Train_v2.xml])
-* `test_data`: test gold data set path [./data/Laptops_Test_Gold.xml] (or [./data/Restaurants_Test_Gold.xml])
+* `train_data`: train gold data set path [./data/Laptop_Train_v2.xml] or [./data/Restaurants_Train_v2.xml]
+* `test_data`: test gold data set path [./data/Laptops_Test_Gold.xml] or [./data/Restaurants_Test_Gold.xml]
 * `show`: print progress [False]
 
 ### Performance - Laptop Dataset
@@ -62,6 +62,9 @@ Note this code requires TensorFlow and Progress to run.
 ### Acknowledgements
 * More than 80% of the code is borrowed from [carpedm20](https://github.com/carpedm20/MemN2N-tensorflow).
 * Using this code means you have read and accepted the copyrights set by the dataset providers. 
+
+### Author
+[Ganesh J](https://researchweb.iiit.ac.in/~ganesh.j/)
 
 ### Licence
 MIT
