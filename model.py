@@ -226,21 +226,19 @@ class MemN2N(object):
         
         raw_labels = []
         for b in xrange(self.batch_size):
-          x[b][0] = target_data[0]
+          x[b][0] = target_data[m]
           target[b][target_label[m]] = 1
           time[b,:len(source_loc_data[m])] = source_loc_data[m]
           context[b,:len(source_data[m])] = source_data[m]
           m += 1
           raw_labels.append(target_label[m])
 
-        a, loss, self.step = self.sess.run([self.optim,
-                                            self.loss,
-                                            self.global_step],
-                                            feed_dict={
-                                                self.input: x,
-                                                self.time: time,
-                                                self.target: target,
-                                                self.context: context})
+        loss = self.sess.run([self.loss],
+                                        feed_dict={
+                                            self.input: x,
+                                            self.time: time,
+                                            self.target: target,
+                                            self.context: context})
         cost += np.sum(loss)
 
         predictions = self.sess.run(self.correct_prediction, feed_dict={self.input: x,
