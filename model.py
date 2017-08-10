@@ -171,7 +171,7 @@ class MemN2N(object):
 
         for b in xrange(self.batch_size):
             m = rand_idx[cur]
-            x[b][0] = target_data[0]
+            x[b][0] = target_data[m]
             target[b][target_label[m]] = 1
             time[b,:len(source_loc_data[m])] = source_loc_data[m]
             context[b,:len(source_data[m])] = source_data[m]
