@@ -76,10 +76,10 @@ class MemN2N(object):
         '''
         til_hid = tf.tile(self.hid[-1], [1, self.mem_size])
         til_hid3dim = tf.reshape(til_hid, [-1, self.mem_size, self.edim])
-        a_til_concat = tf.concat(2, [til_hid3dim, Ain])
+        a_til_concat = tf.concat(axis=2, values=[til_hid3dim, Ain])
         til_bl_wt = tf.tile(self.BL_W, [self.batch_size, 1])
         til_bl_3dim = tf.reshape(til_bl_wt, [self.batch_size, -1, 2 * self.edim])
-        att = tf.batch_matmul(a_til_concat, til_bl_3dim, adj_y = True)
+        att = tf.matmul(a_til_concat, til_bl_3dim, adjoint_b = True)
         til_bl_b = tf.tile(self.BL_B, [self.batch_size, self.mem_size])
         til_bl_3dim = tf.reshape(til_bl_b, [-1, self.mem_size, 1])
         g = tf.nn.tanh(tf.add(att, til_bl_3dim))
@@ -87,7 +87,7 @@ class MemN2N(object):
         P = tf.nn.softmax(g_2dim)
 
         probs3dim = tf.reshape(P, [-1, 1, self.mem_size])
-        Bout = tf.batch_matmul(probs3dim, Bin)
+        Bout = tf.matmul(probs3dim, Bin)
         Bout2dim = tf.reshape(Bout, [-1, self.edim])
 
         Cout = tf.matmul(self.hid[-1], self.C)
@@ -101,8 +101,7 @@ class MemN2N(object):
             F = tf.slice(Dout, [0, 0], [self.batch_size, self.lindim])
             G = tf.slice(Dout, [0, self.lindim], [self.batch_size, self.edim-self.lindim])
             K = tf.nn.relu(G)
-            self.hid.append(tf.concat(1, [F, K]))
-
+            self.hid.append(tf.concat(axis=1, values=[F, K]))
     def build_model(self):
       self.build_memory()
 
